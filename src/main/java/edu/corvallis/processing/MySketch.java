@@ -50,10 +50,12 @@ public class MySketch extends ProcessingSketch {
         // green
         if (state.equals("green")) { 
             fill(60, 200, 80); 
+            carX+=1;
         } else { 
             fill(25, 75, 35); 
         }
         ellipse(510, 175, 50, 50);
+        
     }
 
     public void drawCar(float x, float y) {
