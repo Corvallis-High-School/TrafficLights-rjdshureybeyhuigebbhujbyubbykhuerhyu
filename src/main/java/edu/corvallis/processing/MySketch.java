@@ -3,6 +3,7 @@ package edu.corvallis.processing;
 public class MySketch extends ProcessingSketch {
     String state = "green"; //
     float carX = 40;
+    float carspd = 0;
 
     public void settings() {
         size(600, 400);
@@ -50,12 +51,12 @@ public class MySketch extends ProcessingSketch {
         // green
         if (state.equals("green")) { 
             fill(60, 200, 80); 
-            carX+=1;
+            carspd+=1/60;
         } else { 
             fill(25, 75, 35); 
         }
         ellipse(510, 175, 50, 50);
-        
+        carX+=carspd;
     }
 
     public void drawCar(float x, float y) {
@@ -69,9 +70,16 @@ public class MySketch extends ProcessingSketch {
     }
 
     public void mousePressed() {
-        double d = calculateDistance(mouseX, mouseY, 510, 55);
-        if (d <= 25) {
-            state = "red";
+        //double d = calculateDistance(mouseX, mouseY, 510, 55);
+        //if (d <= 25) {
+        //    state = "red";
+        //}
+        if (state.equals("red")){
+            state = "green";
+        }else if(state.equals("yellow")){
+            state="red";
+        }else if(state.equals("green")){
+            state="yellow";
         }
     }
 
